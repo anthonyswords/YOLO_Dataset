@@ -24,8 +24,8 @@ def rectangle_YOLO(file_image, df, full_path_name_ext):
     plt.title(set(df['name_image']))
     if path.exists(full_path_name_ext):
         remove(full_path_name_ext)
-    print("[!] S'ha guardat una imatge a la ruta: {}".format(full_path_name_ext))
     plt.savefig(full_path_name_ext)
+    print("[!] S'ha guardat un plot a la ruta: {}".format(full_path_name_ext))
     plt.close()
 
 
@@ -38,6 +38,7 @@ def plot_barplot(df, x_axis, y_axis, title, full_path_name_ext: str,
     if ylabel:
         plt.ylabel(ylabel)
     plt.savefig(full_path_name_ext)
+    print("[!] S'ha guardat un plot a la ruta: {}".format(full_path_name_ext))
     plt.close()
 
 
@@ -45,6 +46,7 @@ def plot_den_hist(df, x, full_path_name_ext):
     plt.hist(x, density=True, color="green", label='Density', data=df)
     plt.legend()
     plt.savefig(full_path_name_ext)
+    print("[!] S'ha guardat un plot a la ruta: {}".format(full_path_name_ext))
     plt.close()
 
 
@@ -61,6 +63,7 @@ def plot_sns(df, x, y, type_col, kind, title_plot, full_path_name_ext):
                         va='center', xytext=(0, 10), textcoords='offset points')
     plt.title(title_plot)
     plt.savefig(full_path_name_ext)
+    print("[!] S'ha guardat un plot a la ruta: {}".format(full_path_name_ext))
     plt.close()
 
 
