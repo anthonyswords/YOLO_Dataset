@@ -15,9 +15,23 @@ en la que la fotografia ha estat presa.
 - labels: En aquesta carpeta trobareu els arxius .txt amb el mateix nom base que la imatge a la que correspon. A cada arxiu hi hauran tantes linees com objectes trobats a la imatge. Per a cada objecte trobareu 6 columnes amb la següent informació:
 
 ### Exemple d'un arxiu de labels:
-2 0.454346 0.441895 0.0405273 0.0576172 0.205418
-2 0.490723 0.438965 0.0234375 0.0615234 0.2438
+2 0.454346 0.441895 0.0405273 0.0576172 0.205418 \
 [...] on
 * **identificador de l'objecte**: enter entre 0 i 80, que són la quantitat d'objectes que contempla el model de YOLO (us donem una relació entre l'identificador i el tipus d'objete a l'arxiu class_name.txt)
 * **coordenades objecte $x^n_c$, $y^n_c$ , $w^n$ , $h^n$**: La posició de l'objecte detectat es defineix per la *bounding box*, que és el rectangle que conté l'objecte. Aquest ve definit per 4 coordenades, en aquest cas les coordenades són el valor central *( $x^n_c$ , $y^n_c$ )*, l'amplada i l'alçada *( $w^n$ , $h^n$ )*. YOLO dóna tots aquests valors normalitzats, per tant es trobaran entre 0 i 1, és a dir, les coordenades horitzon tals van dividides per l'amplada total de la imatge i les coordenades verticals per l'alçada total de la imatge
 * **confiança de la detecció**: la última columna tenim la probabilitat que dóna el model de YOLO de que la posició de l'objecte sigui la correcta.
+
+De tal manera que, l'unió entre els dos arxius corresponents, quedaría tal que així:
+### Exemple de resultat desitjat:
+![berlin_000001_000019_leftImg8bit_15-01-2018.png i berlin_000001_000019_leftImg8bit_15-01-2018.txt](/dataset_cities/Ex3_Fig1.png)
+
+## Com funciona el codi?
+
+### Input format
+
+El codi espera els arxius del dataset (images/*, labels/* i class_name.txt). Opcionalment, es pot introduir la ruta del projecte en qüestió, però, remarcar que no cal afegir-la perquè està automatitzat per a que el codi ens llegeixi la ruta on es localitza el projecte, des del main, fins a la resta d'arxius esmentats.
+Per tant, *premeu l'opció RUN directament i vegeu per consola tot l'anàlisi desenvolupat*.
+
+### Program output
+
+El codi ens mostra per consola tot el desenvolupament del projecte. A més, l'ús de gràfics s'obren automàticament a través del navegador que tingeu per defecte. Un cop executat el codi, llegirà seqüencialment fins a arribar a l'últim punt amb èxit. Podreu veure tot l'anàlisi emprat.
