@@ -18,7 +18,7 @@ en la que la fotografia ha estat presa.
 2 0.454346 0.441895 0.0405273 0.0576172 0.205418 \
 [...] on
 * **identificador de l'objecte**: enter entre 0 i 80, que són la quantitat d'objectes que contempla el model de YOLO (us donem una relació entre l'identificador i el tipus d'objete a l'arxiu class_name.txt)
-* **coordenades objecte $x^n_c$, $y^n_c$ , $w^n$ , $h^n$**: La posició de l'objecte detectat es defineix per la *bounding box*, que és el rectangle que conté l'objecte. Aquest ve definit per 4 coordenades, en aquest cas les coordenades són el valor central ( $x^n_c$ , $y^n_c$ ), l'amplada i l'alçada $w^n$ , $h^n$ . YOLO dóna tots aquests valors normalitzats, per tant es trobaran entre 0 i 1, és a dir, les coordenades horitzon tals van dividides per l'amplada total de la imatge i les coordenades verticals per l'alçada total de la imatge
+* **coordenades objecte $x^n_c$, $y^n_c$ , $w^n$ , $h^n$**: La posició de l'objecte detectat es defineix per la *bounding box*, que és el rectangle que conté l'objecte. Aquest ve definit per 4 coordenades, en aquest cas les coordenades són el valor central ( $x^n_c$ , $y^n_c$ ), l'amplada i l'alçada ( $w^n$ , $h^n$ ). YOLO dóna tots aquests valors normalitzats, per tant es trobaran entre 0 i 1, és a dir, les coordenades horitzon tals van dividides per l'amplada total de la imatge i les coordenades verticals per l'alçada total de la imatge
 * **confiança de la detecció**: la última columna tenim la probabilitat que dóna el model de YOLO de que la posició de l'objecte sigui la correcta.
 
 De tal manera que, l'unió entre els dos arxius corresponents, quedaría tal que així:
