@@ -2,8 +2,9 @@ from os import listdir, getcwd, path, remove
 from os.path import exists, join, isfile
 import pandas as pd
 import re
-pd.set_option('display.max_columns', 10)
+import webbrowser
 
+pd.set_option('display.max_columns', 10)
 
 
 def concat_list_df(list_df: list) -> pd.DataFrame:
@@ -34,8 +35,8 @@ def check_yolo(full_path_name_file) -> bool:
     :param full_path_name_file:
     :return: bool
     """
-    r = re.compile("^([0-7][0-9]{1}|[0-9]{1}|80)"
-                   "\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+$")
+    r = re.compile(r"^([0-7][0-9]{1, 1}|[0-9]{1, 1}|80)"
+                   r"\s[0-1]{1, 1}.\d+\s[0-1]{1, 1}.\d+\s[0-1]{1, 1}.\d+\s[0-1]{1, 1}.\d+\s[0-1]{1, 1}.\d+$")
     with open(full_path_name_file) as f:
         for line in f:
             if not r.search(line):
@@ -50,7 +51,7 @@ def check_yolo(full_path_name_file) -> bool:
 def get_path_files(main_project_path: str = None) -> str:
     """
     Aconseguir 3 paths dels arxius a treballar al dataset. Punt d'origen és la carpeta del projecte.
-    :param main_project_path(opt): inserir manualment la path on es troba la carpeta del projecte (inclòs)
+    :param main_project_path: inserir manualment la path on es troba la carpeta del projecte (inclòs)
     :return: path class_name.txt(str), path d'imatges(str) i path de labels(str)
     """
     # utilitzem getcwd() per evitar lectura de rutes en diferents sistemes operatius, entre d'altres mètodes OS
@@ -190,11 +191,16 @@ def replace_column(df: pd.DataFrame, column: str, pattern: str, sub: str, regex:
     return df.loc[:, column].str.replace(r'{0}'.format(pattern), r'{0}'.format(sub), regex=regex)
 
 
-def save_to_csv(df: pd.DataFrame, path: str, name_csv: str, header: bool=True, index: bool=False) -> None:
-    if exists(join_path(path,name_csv)):
-        remove(join_path(path,name_csv))
-    df.to_csv(join_path(path,name_csv), header=header, index=index)
+def save_to_csv(df: pd.DataFrame, path_to_save: str, name_csv: str, header: bool = True, index: bool = False) -> None:
+    if exists(join_path(path_to_save, name_csv)):
+        remove(join_path(path_to_save, name_csv))
+    df.to_csv(join_path(path_to_save, name_csv), header=header, index=index)
 
 
-def read_csv(name_csv, path) -> pd.DataFrame:
-    return pd.read_csv(join_path(path,name_csv))
+def read_csv(name_csv, path_to_read) -> pd.DataFrame:
+    return pd.read_csv(join_path(path_to_read, name_csv))
+
+
+def print_image(path_to_file):
+    browser = webbrowser.get('windows-default')
+    browser.open(path_to_file)
