@@ -27,9 +27,11 @@ De tal manera que, l'unió entre els dos arxius corresponents, quedaría tal que
 
 ## Com funciona el codi?
 
+S'ha fet proves amb èxit tant en un entorn virtual de distribució Ubuntu 20.04 LTS com Windows 10 21h2. Teniu a disposició de les versions de les llibreries emprades a requirements.txt així com la llicència de distribució de la present.
+
 ### Input format
 
-El codi espera els arxius del dataset (images/*, labels/* i class_name.txt). Opcionalment, es pot introduir la ruta del projecte en qüestió, però, remarcar que no cal afegir-la perquè està automatitzat per a que el codi ens llegeixi la ruta on es localitza el projecte, des del main, fins a la resta d'arxius esmentats.
+El codi no exigeix cap argument, tot i que espera que tinguem a disposició dels arxius amb el seu format corresponent dintre del dataset (images/*, labels/* i class_name.txt), ja bé sigui ordenats com desordenats. Opcionalment, es pot introduir manualment la seva ruta del projecte ubicada en el seu sistema en qüestió, però, remarcar que no cal afegir-la perquè està automatitzat per a que el codi ens llegeixi la ruta on es localitza el projecte des del main fins a la resta d'arxius esmentats.
 Per tant, *premeu l'opció RUN directament i vegeu per consola tot l'anàlisi desenvolupat*.
 
 ### Program output
