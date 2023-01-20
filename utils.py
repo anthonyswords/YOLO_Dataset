@@ -2,7 +2,6 @@ from os import listdir, getcwd, path, remove
 from os.path import exists, join, isfile
 import pandas as pd
 import re
-import webbrowser
 
 pd.set_option('display.max_columns', 10)
 
@@ -35,8 +34,8 @@ def check_yolo(full_path_name_file) -> bool:
     :param full_path_name_file:
     :return: bool
     """
-    r = re.compile(r"^([0-7][0-9]{1, 1}|[0-9]{1, 1}|80)"
-                   r"\s[0-1]{1, 1}.\d+\s[0-1]{1, 1}.\d+\s[0-1]{1, 1}.\d+\s[0-1]{1, 1}.\d+\s[0-1]{1, 1}.\d+$")
+    r = re.compile("^([0-7][0-9]{1}|[0-9]{1}|80)"
+                   "\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+$")
     with open(full_path_name_file) as f:
         for line in f:
             if not r.search(line):
@@ -200,7 +199,3 @@ def save_to_csv(df: pd.DataFrame, path_to_save: str, name_csv: str, header: bool
 def read_csv(name_csv, path_to_read) -> pd.DataFrame:
     return pd.read_csv(join_path(path_to_read, name_csv))
 
-
-def print_image(path_to_file):
-    browser = webbrowser.get('windows-default')
-    browser.open(path_to_file)

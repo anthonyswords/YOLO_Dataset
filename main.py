@@ -6,7 +6,7 @@ Autor: Antoni Espadas Navarro
 """
 
 from utils import *
-from plots import rectangle_YOLO, plot_barplot, plot_den_hist, plot_sns
+from plots import rectangle_YOLO, plot_barplot, plot_den_hist, plot_sns, plot_image
 
 
 def main(main_project_path=None):
@@ -51,8 +51,7 @@ def main(main_project_path=None):
         rectangle_YOLO(join_path(path_image, list_files_from_images[i]),
                        df_merged_ex1[df_merged_ex1['index_sorted'] == i],
                        join_path(path_class_name, 'Ex3_Fig{0}.png'.format(i)))
-        print_image(join_path(path_class_name, 'Ex3_Fig{0}.png'.format(i)))
-
+        plot_image(join_path(path_class_name, 'Ex3_Fig{0}.png'.format(i)))
     print("[!] S'han obert les 3 primeres imatges (ordenades alfabèticament) amb els seu respectius rectangles\n")
 
     print("\n######################### Exercici 4 #########################\n")
@@ -66,13 +65,13 @@ def main(main_project_path=None):
     print(df_grouped_name.head(5))
     plot_barplot(df_grouped_name, 'name', 'count', "Número total d'objectes de cada clase",
                  join_path(path_class_name, 'Ex4_1Fig{0}.png'.format(1)))
-    print_image(join_path(path_class_name, 'Ex4_1Fig{0}.png'.format(1)))
+    plot_image(join_path(path_class_name, 'Ex4_1Fig{0}.png'.format(1)))
     print("\n[!] S'ha obert una gràfica de tipus barres amb el número total d'objectes de cada clase\n")
 
     print("\n######################### Exercici 4.2 #########################\n")
     top_5 = df_ex4[df_ex4.name.isin(list(df_grouped_name['name'].head(5)))]
     plot_den_hist(top_5[['name', 'name_image']], "name", join_path(path_class_name, 'Ex4_2Fig{0}.png'.format(1)))
-    print_image(join_path(path_class_name, 'Ex4_2Fig{0}.png'.format(1)))
+    plot_image(join_path(path_class_name, 'Ex4_2Fig{0}.png'.format(1)))
     print("[!] S'ha obert un histograma normalitzat de tipus barres per veure les distribucions per objecte\n")
 
     print("\n######################### Exercici 4.3 #########################\n")
@@ -98,19 +97,19 @@ def main(main_project_path=None):
 
     print("\n######################### Exercici 5 #########################\n")
     df_ex5 = df_ex4.copy()
-    df_ex5['year'] = replace_column(df_ex5, 'name_image', r'(\w+_\d+_\w+-\d+-)|(.png|.txt)', '')
-    df_ex5['city'] = replace_column(df_ex5, 'name_image', '([_].*$)', '')
+    df_ex5.loc[:, 'year'] = replace_column(df_ex5, 'name_image', r'(\w+_\d+_\w+-\d+-)|(.png|.txt)', '')
+    df_ex5.loc[:, 'city'] = replace_column(df_ex5, 'name_image', '([_].*$)', '')
     df_ex5_group = grouped_count_df(df_ex5, ['year', 'city', 'name'], 'count', True)
     df_ex5_group_filter = df_ex5_group[df_ex5_group['name'] == 'car']
     print(df_ex5_group_filter)
     tit_ex5 = 'El número de cotxes per any, per cada ciutat'
     plot_sns(df_ex5_group_filter, 'year', 'count', 'city', 'bar', tit_ex5, join_path(path_class_name, 'Ex5Fig.png'))
-    print_image(join_path(path_class_name, 'Ex5Fig.png'))
+    plot_image(join_path(path_class_name, 'Ex5Fig.png'))
     print("[!] S'ha obert un plot de tipus barres de seaborn per veure el número de cotxes per any, per cada ciutat\n")
 
     print("\n######################### Exercici 6 #########################\n")
     df_ex6 = df_ex4.copy()
-    df_ex6['city'] = replace_column(df_ex6, 'name_image', '([_].*$)', '')
+    df_ex6.loc[:, 'city'] = replace_column(df_ex6, 'name_image', '([_].*$)', '')
     list_possible_fraud = grouped_count_df(df_ex6, ['name'], 'count', True).query('count<5')['name'].tolist()
     df_frauds = df_ex6[df_ex6['name'].isin(list_possible_fraud)]
     df_frauds_filter = df_frauds[df_frauds['city'] == 'zurich'].loc[:, ['name', 'name_image', 'city']]
@@ -126,9 +125,9 @@ def main(main_project_path=None):
 
     print("\n######################### Exercici 7 #########################\n")
     df_ex7 = df_ex4.copy()
-    df_ex7['city'] = replace_column(df_ex7, 'name_image', '([_].*$)', '')
-    df_ex7['year'] = replace_column(df_ex7, 'name_image', r'(\w+_\d+_\w+-\d+-)|(.png|.txt)', '')
-    df_ex7['is_city'] = True
+    df_ex7.loc[:, 'city'] = replace_column(df_ex7, 'name_image', '([_].*$)', '')
+    df_ex7.loc[:, 'year'] = replace_column(df_ex7, 'name_image', r'(\w+_\d+_\w+-\d+-)|(.png|.txt)', '')
+    df_ex7.loc[:, 'is_city'] = True
     list_filter_object = ['car', 'traffic light', 'person']
     df_filter_object = df_ex7[df_ex7['name'].isin(list_filter_object)]
     df_filter_object.loc[df_filter_object['name_image'].isin(list_frauds), 'is_city'] = False
