@@ -42,18 +42,19 @@ $ python3 main.py
 ### Consola (Ubuntu) - Coverage:
 Per analitzar Coverage dels tests. Cal seguir les següents pases:
 
-1. Install Coverage.py (omitiu aquest pas en cas instal·lat):
+1. Install Coverage.py (omitiu aquest pas en cas instal·lat).
  $ pip install coverage
  
-2. Comprovació:
+2. Comprovació.
 $ coverage --version
 
 3. Execució: utilitzeu -lo per executar el vostre conjunt de proves i recopilar dades.
-coverage run -m unittest discover
+$ coverage run -m unittest discover
 
-4. Utilitzeu -lo per informar dels resultats:coverage report
+4. Utilitzeu -lo per informar dels resultats: coverage report.
 $ coverage report -m testutils.py
 $ coverage report -m testplots.py
+
 
 ### Program output
 
