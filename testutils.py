@@ -13,8 +13,10 @@ from utils import (
     replace_column,
     df_img_obj_fraud,
     save_to_csv,
-    search_pattern_yolo
+    search_pattern_yolo,
+    get_list_index_popular_key
 )
+import pandas as pd
 
 
 class TestUtils(unittest.TestCase):
@@ -66,7 +68,7 @@ class TestUtils(unittest.TestCase):
         cls.df_ex7.loc[:, 'year'] = replace_column(cls.df_ex7, 'name_image', r'(\w+_\d+_\w+-\d+-)|(.png|.txt)', '')
         cls.df_ex7.loc[:, 'is_city'] = True
         cls.list_filter_object = ['car', 'traffic light', 'person']
-        cls.df_filter_object = cls.df_ex7[cls.df_ex7['name'].isin(cls.list_filter_object)]
+        cls.df_filter_object = cls.df_ex7[cls.df_ex7['name'].isin(cls.list_filter_object)].copy()
         cls.df_filter_object.loc[cls.df_filter_object['name_image'].isin(cls.list_frauds), 'is_city'] = False
         cls.df_csv = (grouped_count_df(cls.df_filter_object, ['name_image',
                                                               'city',
@@ -171,5 +173,5 @@ class TestUtils(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(Testutils)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestUtils)
     unittest.TextTestRunner(verbosity=2).run(suite)
