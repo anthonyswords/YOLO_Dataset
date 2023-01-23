@@ -9,7 +9,7 @@ import webbrowser
 
 def rectangle_YOLO(file_image, df, full_path_name_ext) -> None:
     """
-    Retorna una imatge amb un rectangle format per les coordenades de la seva imatge
+    Desa una imatge inseint uns rectangles gràcies a l'inserció dels punts de les coordenades de la mateixa.
     :param file_image: ubicació + nom del fitxer d'imatge desitjada per obir-ho
     :param df: dataframe principal, filtrat per l'imatge desitjada amb els seus valors del rectangle
     :param full_path_name_ext: ubicació + nom fitxer inclòs, on desar el plot (s'ha d'incloure extensió dintre del nom)
@@ -64,7 +64,7 @@ def plot_barplot(df: pd.DataFrame, x_axis: str, y_axis: str, title: str, full_pa
 
 def sns_plot_norm(df: pd.DataFrame, col_x: str, type: str, title: str, full_path_name_ext: str) -> None:
     """
-    Plot d'una distribució normalitzada en format stack
+    Desa un plot d'una distribució normalitzada en format stack
     :param df: pd.DataFrame original
     :param col_x: str nom columna x axis
     :param type: str nom columna agrupat pet colors
@@ -81,7 +81,7 @@ def sns_plot_norm(df: pd.DataFrame, col_x: str, type: str, title: str, full_path
 
 def plot_sns(df: pd.DataFrame, x: str, y: str, type_col: str, kind: str, title: str, full_path_name_ext: str) -> None:
     """
-    Desa un plto de seaborn agrupat
+    Desa un plot de seaborn agrupat segons els colors
     :param df: pd.DataFrame
     :param x: str nom columna x-axis
     :param y: str nom columna y.axis
@@ -109,7 +109,7 @@ def plot_sns(df: pd.DataFrame, x: str, y: str, type_col: str, kind: str, title: 
 
 def plot_image(path_to_file: str) -> None:
     """
-    Obre el fitxer imatge a través del navegador
+    Obre el fitxer imatge a través del navegador del sistema.
     :param path_to_file: ubicació + nom on desar el plot (s'ha d'incloure extensió)
     :return: Exe: open Firefox localserver: imatge.png
     """
