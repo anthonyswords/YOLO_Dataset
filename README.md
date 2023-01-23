@@ -34,6 +34,19 @@ S'ha fet proves amb èxit tant en un entorn virtual de distribució Ubuntu 20.04
 Si us plau, reviseu que es compleix el requisíts mínims sobre les versions de les llibreries emprades a requirements.txt per dur a terme l'execució del codi de la present amb èxit. Per això, us recomanem que feu la següent comanda a la vostra consola:\
 $ pip3 install -r requirements.txt
 
+Important: indispensable que l'arxiu original 'dataset_cities' ha de trobarse a l'arrel principal juntament amb la resta d'arxius.
+Ex: 
+- pyProjectPAC4_tespas/\
+-- **dataset_cities/** \
+-- main.py\
+-- requirements.py/\
+-- etc.
+
+Dintre de l'arrel ./dataset_cities/:
+--- images/
+--- labels/
+--- class_name.txt
+
 ### Input format
 
 El codi no exigeix cap argument, tot i que espera que tinguem a disposició dels arxius amb el seu format corresponent dintre del dataset (dataset_cities/images/, dataset_cities/labels/ i dataset_cities/class_name.txt), ja bé sigui amb els noms d'aquests ordenats com desordenats. Opcionalment, es pot introduir manualment la seva ruta del projecte ubicada en el seu sistema en qüestió, però, remarcar que no cal afegir-la perquè està automatitzat per a que el codi ens llegeixi la ruta on es localitza el projecte des del main fins a la resta d'arxius esmentats.
