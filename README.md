@@ -36,4 +36,4 @@ Per tant, *premeu l'opció RUN directament i vegeu per consola tot l'anàlisi de
 
 ### Program output
 
-El codi ens mostra per consola tot el desenvolupament del projecte. A més, l'ús de gràfics s'obren automàticament a través del navegador que tingeu per defecte. Un cop executat el codi, llegirà seqüencialment fins a arribar a l'últim punt amb èxit. Podreu veure tot l'anàlisi emprat.
+El codi ens mostra per consola tot el desenvolupament del projecte. A més, l'ús de gràfics s'obren automàticament a través del navegador que tingeu per defecte. Un cop executat el codi, llegirà seqüencialment fins a arribar a l'últim punt amb èxit on podreu veure tot l'anàlisi emprat.
