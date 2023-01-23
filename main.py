@@ -24,7 +24,7 @@ from utils import (
     df_img_obj_fraud,
     save_to_csv
 )
-from plots import rectangle_YOLO, plot_barplot, plot_den_hist, plot_sns, plot_image
+from plots import rectangle_YOLO, plot_barplot, sns_plot_norm, plot_sns, plot_image
 
 
 def main(main_project_path=None):
@@ -100,7 +100,9 @@ def main(main_project_path=None):
     print("[·] Mostreu en un sol gráfic les distribucions per objecte trobades per tal de comparar-les (feu servir \n"
           "histogrames normalitzats):\n")
     top_5 = df_ex4[df_ex4.name.isin(list(df_grouped_name['name'].head(5)))]
-    plot_den_hist(top_5[['name', 'name_image']], "name", join_path(path_class_name, 'Ex4_2Fig{0}.png'.format(1)))
+    title_ex4_2 = "Distribució normalitzada de la freqüéncia aparacions dels 5 objectes populars"
+    sns_plot_norm(grouped_count_df(top_5, ['index_sorted', 'name'], 'count', True),'count','name', title,
+                  join_path(path_class_name, 'Ex4_2Fig{0}.png'.format(1)))
     plot_image(join_path(path_class_name, 'Ex4_2Fig{0}.png'.format(1)))
     print("[!] S'ha obert un histograma normalitzat de tipus barres per veure les distribucions per objecte\n")
 
