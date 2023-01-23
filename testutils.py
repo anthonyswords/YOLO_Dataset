@@ -124,7 +124,7 @@ class TestUtils(unittest.TestCase):
         i_filter_2_3_1 = i[i['name_image'] == exe_4_4_2_3_1]
         i_filter_2_3_2 = i[i['name_image'] == exe_4_4_2_3_2]
         i_filter_2_3_3 = i[i['name_image'] == exe_4_4_2_3_3]
-        print("##################################### Test: Ex 4.4 - 1 ########################################")
+        print("\n##################################### Test: Ex 4.4 - 1 ########################################")
         self.assertEqual(get_list_index_popular_key(i, 'name_image', 'count', 'name', exe_4_4_1), [0, 789, 937])
         print(i_filter_1)
         print("20 person, 3 car, 2 umbr -> Si en té menys de 3 objectes o exactament 3 objectes diferents \n"
