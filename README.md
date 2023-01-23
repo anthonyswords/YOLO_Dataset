@@ -58,7 +58,7 @@ $ coverage --version
 3. Execució: utilitzeu -lo per executar el vostre conjunt de proves i recopilar dades: \
 $ coverage run -m unittest discover
 
-4. Utilitzeu -lo per informar dels resultats: coverage report:\
+4. Utilitzeu-lo per informar dels resultats: coverage report:\
 $ coverage report -m testutils.py \
 $ coverage report -m testplots.py
 
