@@ -29,6 +29,11 @@ De tal manera que, l'unió entre els dos arxius corresponents, quedaría tal que
 
 S'ha fet proves amb èxit tant en un entorn virtual de distribució Ubuntu 20.04 LTS com Windows 10 21h2. Teniu a disposició de les versions de les llibreries emprades a requirements.txt així com la llicència de distribució de la present.
 
+### *Abans de començar*
+
+Si us plau, reviseu que es compleix el requisíts mínims sobre les versions de les llibreries emprades a requirements.txt per dur a terme l'execució del codi de la present amb èxit. Per això, us recomanem que feu la següent comanda a la vostra consola:\
+$ pip3 install -r requirements.txt
+
 ### Input format
 
 El codi no exigeix cap argument, tot i que espera que tinguem a disposició dels arxius amb el seu format corresponent dintre del dataset (dataset_cities/images/, dataset_cities/labels/ i dataset_cities/class_name.txt), ja bé sigui amb els noms d'aquests ordenats com desordenats. Opcionalment, es pot introduir manualment la seva ruta del projecte ubicada en el seu sistema en qüestió, però, remarcar que no cal afegir-la perquè està automatitzat per a que el codi ens llegeixi la ruta on es localitza el projecte des del main fins a la resta d'arxius esmentats.
@@ -37,7 +42,9 @@ Pycharm:
 Per tant, *premeu l'opció **RUN** directament i vegeu per consola tot l'anàlisi desenvolupat* exclusivament al mòdul main() -- Ídem a l'opció de test files(testutils i testplots).
 
 Consola: (des de l'ubicació del projecte principal - main) -- Ídem a l'opció de test files(testutils i testplots): \
-$ python3 main.py
+$ python3 main.py \
+$ python3 testutils.py \
+$ python3 testplots.py
 
 ### Consola (Ubuntu) - Coverage:
 Per analitzar Coverage dels tests. Cal seguir les següents pases:
