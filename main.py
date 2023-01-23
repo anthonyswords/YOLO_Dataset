@@ -101,7 +101,7 @@ def main(main_project_path=None):
           "histogrames normalitzats):\n")
     top_5 = df_ex4[df_ex4.name.isin(list(df_grouped_name['name'].head(5)))]
     title_ex4_2 = "Distribució normalitzada de la freqüéncia aparacions dels 5 objectes populars"
-    plot_sns_norm(grouped_count_df(top_5, ['index_sorted', 'name'], 'count', True),'count','name', title,
+    plot_sns_norm(grouped_count_df(top_5, ['index_sorted', 'name'], 'count', True),'count','name', title_ex4_2,
                   join_path(path_class_name, 'Ex4_2Fig{0}.png'.format(1)))
     plot_image(join_path(path_class_name, 'Ex4_2Fig{0}.png'.format(1)))
     print("[!] S'ha obert un histograma normalitzat de tipus barres per veure les distribucions per objecte\n")
