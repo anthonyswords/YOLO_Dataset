@@ -32,7 +32,28 @@ S'ha fet proves amb èxit tant en un entorn virtual de distribució Ubuntu 20.04
 ### Input format
 
 El codi no exigeix cap argument, tot i que espera que tinguem a disposició dels arxius amb el seu format corresponent dintre del dataset (images/*, labels/* i class_name.txt), ja bé sigui amb els noms d'aquests ordenats com desordenats. Opcionalment, es pot introduir manualment la seva ruta del projecte ubicada en el seu sistema en qüestió, però, remarcar que no cal afegir-la perquè està automatitzat per a que el codi ens llegeixi la ruta on es localitza el projecte des del main fins a la resta d'arxius esmentats.
-Per tant, *premeu l'opció RUN directament i vegeu per consola tot l'anàlisi desenvolupat*. Ídem a l'opció de test files(testutils i testplot).
+
+Pycharm:
+Per tant, *premeu l'opció RUN directament i vegeu per consola tot l'anàlisi desenvolupat* exclusivament al mòdul main(). Ídem a l'opció de test files(testutils i testplot).
+
+Consola: (des de l'ubicació del projecte principal - main). Ídem a l'opció de test files(testutils i testplot).
+$ python3 main.py
+
+### Consola (Ubuntu) - Coverage:
+Per analitzar Coverage dels tests. Cal seguir les següents pases:
+
+1. Install Coverage.py (omitiu aquest pas en cas instal·lat):
+ $ pip install coverage
+ 
+2. Comprovació:
+$ coverage --version
+
+3. Execució: utilitzeu -lo per executar el vostre conjunt de proves i recopilar dades.
+coverage run -m unittest discover
+
+4. Utilitzeu -lo per informar dels resultats:coverage report
+$ coverage report -m testutils.py
+$ coverage report -m testplots.py
 
 ### Program output
 
