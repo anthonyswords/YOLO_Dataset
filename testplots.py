@@ -1,4 +1,5 @@
 import unittest
+import pandas as pd
 from plots import (
     rectangle_YOLO,
     plot_barplot,
@@ -6,8 +7,6 @@ from plots import (
     plot_image,
     plot_sns_norm
 )
-
-import pandas as pd
 from utils import (
     get_path_files,
     join_path,
@@ -18,6 +17,7 @@ from utils import (
     merge_df
 )
 
+
 class TestPlot(unittest.TestCase):
     main_project_path = None
     path_class_name, path_image, path_label = get_path_files(main_project_path)
@@ -25,7 +25,7 @@ class TestPlot(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print("\n############################################## Testplots.py ##############################################")
+        print("\n########################################### Testplots.py ###########################################")
         print("\n[!] Carreguem únicament dataset ex1 per fer un test del plot rectangle YOLO:\n")
         cls.path_class_name, cls.path_image, cls.path_label = get_path_files(cls.main_project_path)
         cls.list_files_from_labels = sorted(get_list_names_files_from_path(cls.path_label))
@@ -60,8 +60,8 @@ class TestPlot(unittest.TestCase):
             }
         )
         plot_barplot(df, 'Year', 'Benefici total', "Benefits(M €)", join_path(self.path_class_name, 'Test_barplt.png'))
-        plot_sns_norm(df.groupby(['CEO']).value_counts().reset_index(name='counts'), 'counts', 'CEO', 'Freq.CEO normalitzat',
-                      join_path(self.path_class_name, 'Test_denplt.png'))
+        plot_sns_norm(df.groupby(['CEO']).value_counts().reset_index(name='counts'), 'counts', 'CEO',
+                      'Freq.CEO normalitzat', join_path(self.path_class_name, 'Test_denplt.png'))
         plot_sns(df, 'Year', 'Benefici total', 'CEO', 'bar', 'Benefici total',
                  join_path(self.path_class_name, 'Test_snsplt.png'))
         rectangle_YOLO(join_path(self.path_image, self.exe_img),

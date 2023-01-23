@@ -1,4 +1,5 @@
 import unittest
+import pandas as pd
 from utils import (
     get_path_files,
     get_list_names_files_from_path,
@@ -16,7 +17,7 @@ from utils import (
     search_pattern_yolo,
     get_list_index_popular_key
 )
-import pandas as pd
+
 
 
 class TestUtils(unittest.TestCase):
@@ -24,7 +25,7 @@ class TestUtils(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print("\n############################################## Testutils.py ##############################################")
+        print("\n########################################### Testutils.py ###########################################")
         print("\n[!] Carreguem tots els datasets que tenim durant el codi d'un sol cop per fer tests posteriorment:\n")
         cls.path_class_name, cls.path_image, cls.path_label = get_path_files(cls.main_project_path)
         cls.list_files_from_labels = sorted(get_list_names_files_from_path(cls.path_label))
