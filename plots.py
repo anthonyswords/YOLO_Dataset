@@ -34,7 +34,7 @@ def rectangle_YOLO(file_image, df, full_path_name_ext) -> None:
         remove(full_path_name_ext)
     plt.savefig(full_path_name_ext)
     print("[!] S'ha guardat un plot a la ruta: {}".format(full_path_name_ext))
-    plt.close()
+    plt.close();
 
 
 def plot_barplot(df: pd.DataFrame, x_axis: str, y_axis: str, title: str, full_path_name_ext: str,
@@ -59,22 +59,24 @@ def plot_barplot(df: pd.DataFrame, x_axis: str, y_axis: str, title: str, full_pa
         plt.ylabel(ylabel)
     plt.savefig(full_path_name_ext)
     print("[!] S'ha guardat un plot a la ruta: {}".format(full_path_name_ext))
-    plt.close()
+    plt.close();
 
 
-def plot_den_hist(df: pd.DataFrame, x: str, full_path_name_ext: str) -> None:
+def sns_plot_norm(df: pd.DataFrame, col_x: str, type: str, title: str, full_path_name_ext: str) -> None:
     """
-    Desa plot de densitat
-    :param df: pd.DataFrame
-    :param x: str nom columna x axis
-    :param full_path_name_ext: ubicació + nom on desar el plot (s'ha d'incloure extensió)
-    :return: save plot
+    Plot d'una distribució normalitzada en format stack
+    :param df: pd.DataFrame original
+    :param col_x: str nom columna x axis
+    :param type: str nom columna agrupat pet colors
+    :param title: str nom títol plot
+    :param full_path_name_ext: path_to_file: ubicació + nom on desar el plot (s'ha d'incloure extensió)
+    :return: sns displot save - return None
     """
-    plt.hist(x, density=True, color="green", label='Density', data=df)
-    plt.legend()
+    sns.displot(df, x=col_x, hue=type, stat="density", multiple="stack")
+    plt.title(title)
     plt.savefig(full_path_name_ext)
     print("[!] S'ha guardat un plot a la ruta: {}".format(full_path_name_ext))
-    plt.close()
+    plt.close();
 
 
 def plot_sns(df: pd.DataFrame, x: str, y: str, type_col: str, kind: str, title: str, full_path_name_ext: str) -> None:
@@ -102,7 +104,7 @@ def plot_sns(df: pd.DataFrame, x: str, y: str, type_col: str, kind: str, title: 
     plt.title(title)
     plt.savefig(full_path_name_ext)
     print("[!] S'ha guardat un plot a la ruta: {}".format(full_path_name_ext))
-    plt.close()
+    plt.close();
 
 
 def plot_image(path_to_file: str) -> None:
@@ -111,4 +113,6 @@ def plot_image(path_to_file: str) -> None:
     :param path_to_file: ubicació + nom on desar el plot (s'ha d'incloure extensió)
     :return: Exe: open Firefox localserver: imatge.png
     """
-    webbrowser.open(path_to_file)
+    webbrowser.open(path_to_file);
+
+    
