@@ -173,7 +173,7 @@ def main(main_project_path=None):
     df_ex7.loc[:, 'year'] = replace_column(df_ex7, 'name_image', r'(\w+_\d+_\w+-\d+-)|(.png|.txt)', '')
     df_ex7.loc[:, 'is_city'] = True
     list_filter_object = ['car', 'traffic light', 'person']
-    df_filter_object = df_ex7[df_ex7['name'].isin(list_filter_object)]
+    df_filter_object = df_ex7[df_ex7['name'].isin(list_filter_object)].copy()
     df_filter_object.loc[df_filter_object['name_image'].isin(list_frauds), 'is_city'] = False
     df_csv = (grouped_count_df(df_filter_object, ['name_image',
                                                   'city',
