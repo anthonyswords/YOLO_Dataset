@@ -4,7 +4,7 @@ from plots import (
     plot_barplot,
     plot_sns,
     plot_image,
-    sns_plot_norm
+    plot_sns_norm
 )
 
 import pandas as pd
@@ -58,7 +58,7 @@ class TestPlot(unittest.TestCase):
             }
         )
         plot_barplot(df, 'Year', 'Benefici total', "Benefits(M €)", join_path(self.path_class_name, 'Test_barplt.png'))
-        sns_plot_norm(df.groupby(['CEO']).value_counts().reset_index(name='counts'), 'counts', 'CEO', 'Freq.CEO normalitzat',
+        plot_sns_norm(df.groupby(['CEO']).value_counts().reset_index(name='counts'), 'counts', 'CEO', 'Freq.CEO normalitzat',
                       join_path(self.path_class_name, 'Test_denplt.png'))
         plot_sns(df, 'Year', 'Benefici total', 'CEO', 'bar', 'Benefici total',
                  join_path(self.path_class_name, 'Test_snsplt.png'))
