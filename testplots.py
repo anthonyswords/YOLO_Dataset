@@ -2,7 +2,6 @@ import unittest
 from plots import (
     rectangle_YOLO,
     plot_barplot,
-    plot_den_hist,
     plot_sns,
     plot_image,
     sns_plot_norm
@@ -59,7 +58,8 @@ class TestPlot(unittest.TestCase):
             }
         )
         plot_barplot(df, 'Year', 'Benefici total', "Benefits(M €)", join_path(self.path_class_name, 'Test_barplt.png'))
-        plot_den_hist(df, 'CEO', join_path(self.path_class_name, 'Test_denplt.png'))
+        sns_plot_norm(df.groupby(['CEO']).value_counts().reset_index(name='counts'), 'counts', 'CEO', 'Freq.CEO normalitzat',
+                      join_path(self.path_class_name, 'Test_denplt.png'))
         plot_sns(df, 'Year', 'Benefici total', 'CEO', 'bar', 'Benefici total',
                  join_path(self.path_class_name, 'Test_snsplt.png'))
         rectangle_YOLO(join_path(self.path_image, self.exe_img),
@@ -67,7 +67,6 @@ class TestPlot(unittest.TestCase):
                        join_path(self.path_class_name, 'Testrectangle.png'))
         plot_image(join_path(self.path_class_name, 'Test_barplt.png'))
         plot_image(join_path(self.path_class_name, 'Test_denplt.png'))
-        plot_image(join_path(self.path_class_name, 'Test_snsplt.png'))
         plot_image(join_path(self.path_class_name, 'Test_snsplt.png'))
         plot_image(join_path(self.path_class_name, 'Testrectangle.png'))
 
