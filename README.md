@@ -10,7 +10,7 @@ En aquesta PAC haureu de treballar amb aquests fitxers per tal d'analitzar les i
 en la que la fotografia ha estat presa.
 
 ### Exemple d'una imatge
-![berlin_000001_000019_leftImg8bit_15-01-2018.png](/dataset_cities/images/berlin_000001_000019_leftImg8bit_15-01-2018.png)
+![berlin_000001_000019_leftImg8bit_15-01-2018.png](./dataset_cities/images/berlin_000001_000019_leftImg8bit_15-01-2018.png)
 
 - labels: En aquesta carpeta trobareu els arxius .txt amb el mateix nom base que la imatge a la que correspon. A cada arxiu hi hauran tantes linees com objectes trobats a la imatge. Per a cada objecte trobareu 6 columnes amb la següent informació:
 
@@ -23,7 +23,7 @@ en la que la fotografia ha estat presa.
 
 De tal manera que, l'unió entre els dos arxius corresponents, quedaría tal que així:
 ### Exemple de resultat desitjat:
-![berlin_000001_000019_leftImg8bit_15-01-2018.png i berlin_000001_000019_leftImg8bit_15-01-2018.txt](/dataset_cities/Ex3_Fig1.png)
+![berlin_000001_000019_leftImg8bit_15-01-2018.png i berlin_000001_000019_leftImg8bit_15-01-2018.txt](./dataset_cities/Ex3_Fig1.png)
 
 ## Com funciona el codi?
 
