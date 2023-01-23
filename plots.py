@@ -1,12 +1,20 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib.image as image
+import pandas as pd
 import seaborn as sns
 from os import remove, path
 import webbrowser
 
 
-def rectangle_YOLO(file_image, df, full_path_name_ext):
+def rectangle_YOLO(file_image, df, full_path_name_ext) -> None:
+    """
+    Retorna una imatge amb un rectangle format per les coordenades de la seva imatge
+    :param file_image: ubicació + nom del fitxer d'imatge desitjada per obir-ho
+    :param df: dataframe principal, filtrat per l'imatge desitjada amb els seus valors del rectangle
+    :param full_path_name_ext: ubicació + nom fitxer inclòs, on desar el plot (s'ha d'incloure extensió dintre del nom)
+    :return: desa un plot
+    """
     W = 2048
     H = 1024
     img = image.imread(file_image)
@@ -29,9 +37,21 @@ def rectangle_YOLO(file_image, df, full_path_name_ext):
     plt.close()
 
 
-def plot_barplot(df, x_axis, y_axis, title, full_path_name_ext: str,
-                 ylabel=None, xlabel=None, rotation=None, legend=True):
-    """Plot data using a barplot."""
+def plot_barplot(df: pd.DataFrame, x_axis: str, y_axis: str, title: str, full_path_name_ext: str,
+                 ylabel: str = None, xlabel: str = None, rotation: int = None, legend: bool = True) -> None:
+    """
+    Desa un barplot
+    :param df: dataframe principal
+    :param x_axis: str nom de la columna on hi ha els valors de la x-axis
+    :param y_axis: str nom de la columna on hi ha els valors de la y-axis
+    :param title: str nom del títol del plot
+    :param full_path_name_ext: ubicació + nom on desar el plot (s'ha d'incloure extensió)
+    :param ylabel: str defult = None
+    :param xlabel: str default = None
+    :param rotation: int la rotació dels axis
+    :param legend: bool default = True
+    :return: save plot
+    """
     df.plot(x=x_axis, y=y_axis, kind="bar", title=title, figsize=(8, 6), rot=rotation, legend=legend)
     if xlabel:
         plt.xlabel(xlabel)
@@ -42,7 +62,14 @@ def plot_barplot(df, x_axis, y_axis, title, full_path_name_ext: str,
     plt.close()
 
 
-def plot_den_hist(df, x, full_path_name_ext):
+def plot_den_hist(df: pd.DataFrame, x: str, full_path_name_ext: str) -> None:
+    """
+    Desa plot de densitat
+    :param df: pd.DataFrame
+    :param x: str nom columna x axis
+    :param full_path_name_ext: ubicació + nom on desar el plot (s'ha d'incloure extensió)
+    :return: save plot
+    """
     plt.hist(x, density=True, color="green", label='Density', data=df)
     plt.legend()
     plt.savefig(full_path_name_ext)
@@ -50,7 +77,18 @@ def plot_den_hist(df, x, full_path_name_ext):
     plt.close()
 
 
-def plot_sns(df, x, y, type_col, kind, title_plot, full_path_name_ext):
+def plot_sns(df: pd.DataFrame, x: str, y: str, type_col: str, kind: str, title: str, full_path_name_ext: str) -> None:
+    """
+    Desa un plto de seaborn agrupat
+    :param df: pd.DataFrame
+    :param x: str nom columna x-axis
+    :param y: str nom columna y.axis
+    :param type_col: str nom columna on els valors s'agrupen amb colors
+    :param kind: str tipus de plot ('bar','line', etc. see in Doc seaborn)
+    :param title: str nom title plot
+    :param full_path_name_ext: ubicació + nom on desar el plot (s'ha d'incloure extensió)
+    :return: desa plot sns
+    """
     g = sns.catplot(x=x,
                     y=y,
                     hue=type_col,
@@ -61,11 +99,16 @@ def plot_sns(df, x, y, type_col, kind, title_plot, full_path_name_ext):
         for p in ax.patches:
             ax.annotate(format(p.get_height(), '.0f'), (p.get_x() + p.get_width() / 2., p.get_height()), ha='center',
                         va='center', xytext=(0, 10), textcoords='offset points')
-    plt.title(title_plot)
+    plt.title(title)
     plt.savefig(full_path_name_ext)
     print("[!] S'ha guardat un plot a la ruta: {}".format(full_path_name_ext))
     plt.close()
 
 
-def plot_image(path_to_file):
+def plot_image(path_to_file: str) -> None:
+    """
+    Obre el fitxer imatge a través del navegador
+    :param path_to_file: ubicació + nom on desar el plot (s'ha d'incloure extensió)
+    :return: Exe: open Firefox localserver: imatge.png
+    """
     webbrowser.open(path_to_file)

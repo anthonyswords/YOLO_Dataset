@@ -40,22 +40,33 @@ def merge_df(df1: pd.DataFrame, df2: pd.DataFrame, on: str, how: str = 'left', s
     return df1.merge(df2, how=how, on=on, sort=sort)
 
 
-def check_yolo(full_path_name_file) -> bool:
+def check_yolo(full_path_name_file: str) -> bool:
     """
     Comprova que té el format YOLO: enter entre 0-80 i 5 columnes de nombre flotants
-    :param full_path_name_file:
+    :param full_path_name_file: string l'ubicació del fitxer
     :return: bool
     """
-    r = re.compile(r"^([0-7][0-9]{1}|[0-9]{1}|80)"
-                   r"\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+$")
     with open(full_path_name_file) as f:
         for line in f:
-            if not r.search(line):
+            if not search_pattern_yolo(line):
                 print(
                     "[+] Eliminarem l'arxiu %s del dataset perqué trobem que no compleix amb el format YOLO: "
                     "\n\t[·] %s" % (
                         full_path_name_file, line))
-                return False
+                return search_pattern_yolo(line)
+    return search_pattern_yolo(line)
+
+
+def search_pattern_yolo(line: str):
+    """
+    Comprova que té el format YOLO: enter entre 0-80 i 5 columnes de nombre flotants
+    :param line: string on es busca si compleix (o no) el patró Yolo
+    :return: bool
+    """
+    r = re.compile(r"^([0-7][0-9]{1}|[0-9]{1}|80)"
+                   r"\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+\s[0-1]{1}.\d+$")
+    if not r.search(line):
+        return False
     return True
 
 
@@ -109,10 +120,9 @@ def check_match_fileImage_fileLabel(list_files_from_labels: list, list_files_fro
     :return: bool
     """
     pattern = '^.*(?=.txt|.png)'
-    if re.findall(pattern,
-                  list_files_from_labels[index]) == re.findall(pattern,
-                                                               list_files_from_images[index]):
-        return True
+    if re.findall(pattern, list_files_from_labels[index]) == re.findall(pattern, list_files_from_images[index]):
+        if re.sub(pattern, list_files_from_labels[index], '') == re.sub(pattern, list_files_from_images[index], ''):
+            return True
     return False
 
 
@@ -206,7 +216,8 @@ def get_list_index_popular_freq(df: pd.DataFrame, col_freq: str, need_sort: bool
         for i in df[col_freq]:
             if position == 1 and max(df[col_freq]) == df[col_freq].iloc[position - 1]:
                 if df[col_freq].iloc[position] == df[col_freq].iloc[position + 1]:
-                    max_pos = position
+                    if df[col_freq].iloc[position] != df[col_freq].iloc[position - 1]:
+                        max_pos = position
             if position == 2 and max(df[col_freq]) >= df[col_freq].iloc[position - 1] and max_pos == 0:
                 if df[col_freq].iloc[position] > df[col_freq].iloc[position + 1]:
                     max_pos = position + 1
@@ -222,7 +233,8 @@ def get_list_index_popular_freq(df: pd.DataFrame, col_freq: str, need_sort: bool
         for i in df[col_freq]:
             if position == 1 and max(df[col_freq]) == df[col_freq].iloc[position - 1]:  # enunciat 2.3.3
                 if df[col_freq].iloc[position] == df[col_freq].iloc[position + 1]:
-                    max_pos = position
+                    if df[col_freq].iloc[position] != df[col_freq].iloc[position - 1]:
+                        max_pos = position
             if position == 2 and max(df[col_freq]) >= df[col_freq].iloc[position - 1] and max_pos == 0:  # 2.3)
                 if df[col_freq].iloc[position] == df[col_freq].iloc[position + 1]:  # enunciat 2.3.2
                     max_pos = position
@@ -251,15 +263,16 @@ def df_img_obj_fraud(df: pd.DataFrame, pattern: str, sub: str, query: int,
                      col_obj: str = 'name', col_img: str = 'name_image', city_filter: str = 'zurich',
                      name_city_col: str = 'city') -> pd.DataFrame:
     """
-
-    :param df:
-    :param pattern:
-    :param sub:
-    :param query:
-    :param col_obj:
-    :param col_img:
-    :param city_filter:
-    :param name_city_col:
+    Retorna un df únicament de les imatges on poden calificar-se com instruses. Es filtra pel número de 'counts' com
+    argument. També es filtra per ciutat extret partir del nom de l'imatge (replace_column function).
+    :param df: DataFrame raw
+    :param pattern: patró per buscar un element a modificar
+    :param sub: element a modificar
+    :param query: filtrar per número de la columna agregada 'counts'
+    :param col_obj: default='name', columna objecte d'estudi
+    :param col_img: default = 'name_image', columna del nom de les imatges
+    :param city_filter: default = 'zurich', ciutat a filtrar
+    :param name_city_col: creació nova columna dels noms de les ciutats a filtrar
     :return:
     """
     df.loc[:, name_city_col] = replace_column(df, col_img, pattern, sub)
