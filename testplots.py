@@ -19,7 +19,6 @@ from utils import (
 )
 
 class TestPlot(unittest.TestCase):
-    """Test the behavior of the plotting module."""
     main_project_path = None
     path_class_name, path_image, path_label = get_path_files(main_project_path)
     exe_img = 'berlin_000000_000019_leftImg8bit_20-10-2018.png'
