@@ -24,7 +24,7 @@ class TestUtils(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print("\n############################################## Test utilis.py ##############################################")
+        print("\n############################################## Test utils.py ##############################################")
         print("\n[!] Carreguem tots els datasets que tenim durant el codi d'un sol cop per fer tests posteriorment:\n")
         cls.path_class_name, cls.path_image, cls.path_label = get_path_files(cls.main_project_path)
         cls.list_files_from_labels = sorted(get_list_names_files_from_path(cls.path_label))
