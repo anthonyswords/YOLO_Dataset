@@ -19,7 +19,8 @@ class TestPlot(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        print("[!] Carreguem únicament dataset ex1 per fer un test del plot rectangle YOLO:\n")
+        print("\n############################################## Test utils.py ##############################################")
+        print("\n[!] Carreguem únicament dataset ex1 per fer un test del plot rectangle YOLO:\n")
         cls.path_class_name, cls.path_image, cls.path_label = get_path_files(cls.main_project_path)
         cls.list_files_from_labels = sorted(get_list_names_files_from_path(cls.path_label))
         cls.list_files_from_images = sorted(get_list_names_files_from_path(cls.path_image))
