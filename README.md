@@ -31,7 +31,7 @@ S'ha fet proves amb èxit tant en un entorn virtual de distribució Ubuntu 20.04
 
 ### Input format
 
-El codi no exigeix cap argument, tot i que espera que tinguem a disposició dels arxius amb el seu format corresponent dintre del dataset (images/*, labels/* i class_name.txt), ja bé sigui amb els noms d'aquests ordenats com desordenats. Opcionalment, es pot introduir manualment la seva ruta del projecte ubicada en el seu sistema en qüestió, però, remarcar que no cal afegir-la perquè està automatitzat per a que el codi ens llegeixi la ruta on es localitza el projecte des del main fins a la resta d'arxius esmentats.
+El codi no exigeix cap argument, tot i que espera que tinguem a disposició dels arxius amb el seu format corresponent dintre del dataset (dataset_cities/images/, dataset_cities/labels/ i dataset_cities/class_name.txt), ja bé sigui amb els noms d'aquests ordenats com desordenats. Opcionalment, es pot introduir manualment la seva ruta del projecte ubicada en el seu sistema en qüestió, però, remarcar que no cal afegir-la perquè està automatitzat per a que el codi ens llegeixi la ruta on es localitza el projecte des del main fins a la resta d'arxius esmentats.
 
 Pycharm:
 Per tant, *premeu l'opció **RUN** directament i vegeu per consola tot l'anàlisi desenvolupat* exclusivament al mòdul main() -- Ídem a l'opció de test files(testutils i testplots).
