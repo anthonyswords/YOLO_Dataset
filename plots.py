@@ -62,7 +62,7 @@ def plot_barplot(df: pd.DataFrame, x_axis: str, y_axis: str, title: str, full_pa
     plt.close();
 
 
-def sns_plot_norm(df: pd.DataFrame, col_x: str, type: str, title: str, full_path_name_ext: str) -> None:
+def plot_sns_norm(df: pd.DataFrame, col_x: str, type: str, title: str, full_path_name_ext: str) -> None:
     """
     Desa un plot d'una distribució normalitzada en format stack
     :param df: pd.DataFrame original
