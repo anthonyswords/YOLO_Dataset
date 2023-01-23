@@ -1,5 +1,13 @@
 import unittest
-from plots import *
+from plots import (
+    rectangle_YOLO,
+    plot_barplot,
+    plot_den_hist,
+    plot_sns,
+    plot_image,
+    sns_plot_norm
+)
+
 import pandas as pd
 from utils import (
     get_path_files,
