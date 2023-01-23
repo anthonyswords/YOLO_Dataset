@@ -47,7 +47,10 @@ class TestPlot(unittest.TestCase):
         cls.df_merged_ex1 = merge_df(cls.df_labels, cls.class_df, 'id')
 
     def test_plot(self):
-        """Tests the behavior of the plot function in case the inputted variable is as expected."""
+        """
+        Comprovem com hauria de mostrar-se les gràfiques amb un exemple bàsic
+        :return: None
+        """
         df = pd.DataFrame(
             {
                 "Year": ["2000", "2005", "2015", "2020"],
